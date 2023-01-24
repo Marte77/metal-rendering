@@ -23,9 +23,23 @@ class Renderer : NSObject, MTKViewDelegate {
         device = mtkView.device!
         commandQueue = device.makeCommandQueue()!
         
-        let vertices = [Vertex2D(color: [1, 0, 0, 1], pos: [-1, -1]),
-                    Vertex2D(color: [0, 1, 0, 1], pos: [0, 1]),
+        var vertices = [Vertex2D(color: [1, 0, 0, 1], pos: [-1, -1]),
+                        Vertex2D(color: [0, 1, 0, 1], pos: [0, 0.5]),
                     Vertex2D(color: [0, 0, 1, 1], pos: [1, -1])]
+        let tamanhoRet: Float = 0.5
+        vertices.append(contentsOf: [
+            Vertex2D(color: [1, 1, 1, 1], pos: [tamanhoRet, tamanhoRet]),
+            Vertex2D(color: [1, 1, 1, 1], pos: [-tamanhoRet, -tamanhoRet]),
+            Vertex2D(color: [1, 1, 1, 1], pos: [-tamanhoRet, tamanhoRet]),
+        ])
+        vertices.append(contentsOf: [
+            Vertex2D(color: [1, 1, 1, 1], pos: [tamanhoRet, tamanhoRet]),
+            Vertex2D(color: [1, 1, 1, 1], pos: [-tamanhoRet, -tamanhoRet]),
+            Vertex2D(color: [1, 1, 1, 1], pos: [tamanhoRet, -tamanhoRet]),
+        ])
+        /*for var v in vertices {
+            v.pos = v.pos * SIMD2<Float>(-1,-1)
+        }*/
         vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex2D>.stride, options: [])!
         
         

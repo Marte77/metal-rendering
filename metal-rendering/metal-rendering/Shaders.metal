@@ -28,7 +28,7 @@ vertex VertexOut2D vertexShader2D(const device //device indica o espaco de memor
     VertexOut2D out;
     
     out.color = in.color;
-    out.pos = float4(in.pos.x, in.pos.y, 0, 1); //nao precisamos de normalizar o x e y pq no swift ja demos os dados normalizados, damos 0 ao z pq nao tem profundidade sendo 2D
+    out.pos = float4(in.pos, 0, 1); //nao precisamos de normalizar o x e y pq no swift ja demos os dados normalizados, damos 0 ao z pq nao tem profundidade sendo 2D
     return out;
 }
 

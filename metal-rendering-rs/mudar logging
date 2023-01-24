@@ -1,0 +1,7 @@
+para mudar logging executar
+   nano ~/.cargo/config.toml
+e alterar para o nivel desejado
+
+
+
+wasm-pack build
